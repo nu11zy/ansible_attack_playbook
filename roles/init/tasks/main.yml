@@ -1,7 +1,8 @@
 - name: Fix time
   become: true
   ansible.builtin.shell: |
-    timedatectl set-ntp true
+    timedatectl set-ntp off
+    timedatectl set-ntp on
 
 - name: Update and upgrade
   become: true
