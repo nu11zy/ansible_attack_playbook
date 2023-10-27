@@ -1,0 +1,6 @@
+- name: Install alacritty
+  become: true
+  copy:
+    src: "{{ playbook_dir }}/roles/alacritty/files/alacritty"
+    dest: /usr/local/bin/alacritty
+    mode: 0755
