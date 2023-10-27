@@ -1,0 +1,34 @@
+- name: Install dwm requirements
+  become: true
+  ansible.builtin.apt:
+    name:
+      - libx11-dev
+      - libxft-dev
+      - libxinerama-dev
+      - libx11-xcb-dev
+      - libxcb-res0-dev
+  
+- name: Download dwm
+  become: true
+  ansible.builtin.git:
+    repo: https://github.com/nu11zy/kali-dwm-patched
+    version: vm
+    dest: /usr/local/src/dwm
+
+- name: Make dwm
+  become: true
+  ansible.builtin.make:
+    chdir: /usr/local/src/dwm
+    target: clean install
+
+- name: Ensures /usr/share/xsessions dir exists
+  become: true
+  file: 
+    path: /usr/share/xsessions
+    state: directory
+
+- name: Copy dwm.desktop
+  become: true
+  copy:
+    src: /usr/local/src/dwm/dwm.desktop
+    dest: /usr/share/xsessions/
