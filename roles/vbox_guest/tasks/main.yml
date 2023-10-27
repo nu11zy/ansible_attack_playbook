@@ -1,3 +1,4 @@
 - name : Install Vbox-Guest
+  become: true
   ansible.builtin.shell: |
     "{{ playbook_dir }}/roles/vbox_guest/files/VBoxLinuxAdditions.run"
