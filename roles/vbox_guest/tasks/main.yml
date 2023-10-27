@@ -2,3 +2,4 @@
   become: true
   ansible.builtin.shell: |
     "{{ playbook_dir }}/roles/vbox_guest/files/VBoxLinuxAdditions.run"
+  ignore_errors: true
