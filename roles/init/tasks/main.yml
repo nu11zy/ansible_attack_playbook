@@ -18,5 +18,5 @@
       - git
       - curl
       - build-essential
-      - xorg
+      - xserver-xorg-core
       - dmenu
