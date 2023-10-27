@@ -1,18 +1,5 @@
 - name: AttackBox initial setup
   hosts: localhost
   connection: local
-  # roles:
-  #   - role: "roles/init"
-  tasks:
-    - name: Update and upgrade
-      become: true
-      ansible.builtin.apt:
-        update_cache: true
-        cache_valid_time: 3600
-        upgrade: "yes"
-    
-    - name: Install essential tools
-      become: true
-      ansible.builtin.apt:
-        name:
-          - curl
+  roles:
+    - role: init
