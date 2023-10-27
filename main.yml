@@ -5,5 +5,5 @@
     - role: init
     - role: wm
     - role: dm
-    - role: vbox-guest
+    - role: vbox_guest
     - role: alacritty
