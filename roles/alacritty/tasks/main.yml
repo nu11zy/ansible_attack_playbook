@@ -2,3 +2,13 @@
   become: true
   ansible.builtin.apt:
     name: alacritty
+
+- name: Create alacritty config dir
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/alacritty"
+    state: directory
+
+- name: Copy alacritty config
+  copy:
+    src: "{{ playbook_dir }}/roles/alacritty/files/alacritty.yml"
+    dest: "{{ ansible_env.HOME }}/.config/alacritty/"
