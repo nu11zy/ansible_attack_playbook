@@ -16,7 +16,7 @@
   ansible.builtin.make:
     chdir: /usr/local/src/ly
     target: install
-    patams:
+    params:
       - installsystemd
 
 - name: Enable ly
