@@ -15,9 +15,7 @@
   become: true
   ansible.builtin.make:
     chdir: /usr/local/src/ly
-    target: install
-    params:
-      - installsystemd
+    target: installsystemd
 
 - name: Enable ly
   become: true
