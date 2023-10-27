@@ -10,3 +10,4 @@
   ansible.builtin.apt:
     name:
       - curl
+    
