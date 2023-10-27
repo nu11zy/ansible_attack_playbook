@@ -1,0 +1,5 @@
+- name: AttackBox initial setup
+  hosts: localhost
+  connection: local
+  roles:
+    - role: "roles/init"
