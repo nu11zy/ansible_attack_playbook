@@ -1,3 +1,8 @@
+- name: Fix time
+  become: true
+  ansible.builtin.shell: |
+    timedatectl set-ntp true
+
 - name: Update and upgrade
   become: true
   ansible.builtin.apt:
