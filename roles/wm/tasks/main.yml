@@ -17,9 +17,9 @@
 
 - name: Make dwm
   become: true
-  ansible.builtin.make:
-    chdir: /usr/local/src/dwm
-    target: install
+  ansible.builtin.shell: |
+    cd /usr/local/src/dwm
+    make clean install
 
 - name: Ensures /usr/share/xsessions dir exists
   become: true
