@@ -9,5 +9,8 @@
   become: true
   ansible.builtin.apt:
     name:
+      - git
       - curl
-    
+      - build-essential
+      - xorg
+      - dmenu
