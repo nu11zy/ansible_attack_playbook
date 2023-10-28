@@ -10,15 +10,12 @@
   ansible.builtin.git:
     repo: https://github.com/fairyglade/ly
     dest: /usr/local/src/ly
+    recursive: yes
 
 - name: Make ly
   become: true
   ansible.builtin.shell: |
     cd /usr/local/src/ly
+    make
     make install installsystemd
-
-- name: Enable ly
-  become: true
-  ansible.builtin.systemd_service:
-    name: ly.service
-    enabled: true
+    systemctl enable ly.service
