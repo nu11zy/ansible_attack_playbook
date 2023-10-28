@@ -1,0 +1,16 @@
+- name: "Install JetBrainsMono Nerd font"
+  become: true
+  copy:
+    src: "{{ playbook_dir }}/roles/fonts/files/JetBrainsMono"
+    dest: "/usr/share/fonts/truetype/"
+
+- name: "Install unifont and noto-fonts"
+  become: true
+  ansible.builtin.apt:
+    name:
+      - fonts-noto
+      - unifont
+
+- name: "Cache fonts"
+  shell: |
+    fc-cache -fv

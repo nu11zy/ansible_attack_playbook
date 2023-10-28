@@ -19,4 +19,8 @@
       - curl
       - build-essential
       - xserver-xorg-core
+      - xserver-xorg-input-evdev
+      - x11-xserver-utils
+      - x11-xkb-utils
+      - x11-utils
       - dmenu
