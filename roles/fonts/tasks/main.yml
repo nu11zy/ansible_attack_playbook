@@ -11,6 +11,11 @@
       - fonts-noto
       - unifont
 
+- name: "Install fontconfig"
+  become: true
+  ansible.builtin.apt:
+    name: fontconfig
+
 - name: "Cache fonts"
   shell: |
     fc-cache -fv
