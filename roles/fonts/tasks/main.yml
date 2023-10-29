@@ -4,17 +4,16 @@
     src: "{{ playbook_dir }}/roles/fonts/files/JetBrainsMono"
     dest: "/usr/share/fonts/truetype/"
 
-- name: "Install unifont and noto-fonts"
-  become: true
-  ansible.builtin.apt:
-    name:
-      - fonts-noto
-      - unifont
-
 - name: "Install fontconfig"
   become: true
   ansible.builtin.apt:
     name: fontconfig
+
+- name: "Install fonts from apt"
+  become: true
+  ansible.builtin.apt:
+    name:
+      - fonts-noto
 
 - name: "Cache fonts"
   shell: |
