@@ -17,10 +17,13 @@
     name:
       - git
       - curl
+      - unzip
       - build-essential
       - xserver-xorg-core
+      - xserver-xorg-video-vmware
       - xserver-xorg-input-evdev
       - x11-xserver-utils
       - x11-xkb-utils
       - x11-utils
+      - xinit
       - dmenu

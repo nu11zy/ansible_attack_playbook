@@ -1,0 +1,7 @@
+- name: Install zsh and plugins
+  become: true
+  ansible.builtin.apt:
+    name:
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting

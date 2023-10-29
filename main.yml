@@ -6,5 +6,6 @@
     - role: wm
     - role: dm
     - role: fonts
-    - role: vbox_guest
+    # - role: vbox_guest
     - role: alacritty
+    - role: zsh
