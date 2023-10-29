@@ -12,7 +12,6 @@
   become: true
   ansible.builtin.git:
     repo: https://github.com/nu11zy/kali-dwm-patched
-    version: vm
     dest: /usr/local/src/dwm
 
 - name: Make dwm
