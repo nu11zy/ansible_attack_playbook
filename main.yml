@@ -9,4 +9,4 @@
     # - role: vbox_guest
     - role: alacritty
     - role: zsh
-      tag:  zsh_tag
+      tags: zsh_tag
