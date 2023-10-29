@@ -1,0 +1,19 @@
+- name: Nmap
+  tags: nmap
+  become: true
+  ansible.builtin.apt:
+    name: nmap
+
+- name: Openvpn
+  tags: Openvpn
+  become: true
+  ansible.builtin.apt:
+    name:
+      - openvpn
+      - network-manager-openvpn-gnome
+
+- name: Wireguard
+  tags: wireguard
+  become: true
+  ansible.builtin.apt:
+    name: wireguard
