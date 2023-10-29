@@ -3,10 +3,10 @@
   connection: local
   roles:
     - role: init
-    # - role: vbox_guest
     - role: wm
     - role: dm
-    # - role: fonts
-    # - role: alacritty
-    # - role: zsh
-    #   tags: zsh_role
+    - role: fonts
+    - role: alacritty
+    - role: zsh
+      tags: zsh_role
+    # - role: vbox_guest
