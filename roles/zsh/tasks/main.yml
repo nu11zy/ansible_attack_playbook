@@ -5,3 +5,9 @@
       - zsh
       - zsh-autosuggestions
       - zsh-syntax-highlighting
+
+- name: Create ~/.zshrc
+  copy:
+    src: "{{ playbook_dir }}/roles/zsh/files/.zshrc"
+    dest: "{{ ansible_env.HOME }}/"
+    mode: 0644
