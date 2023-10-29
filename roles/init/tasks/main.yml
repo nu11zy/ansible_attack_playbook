@@ -1,4 +1,4 @@
-- name: Fix time
+- name: Fixing time
   become: true
   ansible.builtin.shell: |
     timedatectl set-ntp off
