@@ -28,3 +28,22 @@
       - x11-utils
       - xinit
       - dmenu
+
+- name: Configure network
+  become: true
+  copy:
+    src: "{{ playbook_dir }}/roles/init/files/interfaces"
+    dest: "/etc/network/interfaces"
+
+- name: Install network-manager
+  become: true
+  ansible.builtin.apt:
+    name: 
+      - network-manager
+      - network-manager-gnome
+
+- name: Restart networking service
+  become: true
+  ansible.builtin.shell: |
+    systemctl restart networking.service
+    systemctl restart NetworkManager.service
