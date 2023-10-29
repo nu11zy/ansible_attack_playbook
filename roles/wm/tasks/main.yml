@@ -11,7 +11,7 @@
 - name: Download dwm
   become: true
   ansible.builtin.git:
-    repo: https://github.com/nu11zy/kali-dwm-patched
+    repo: https://github.com/nu11zy/dwm-patched
     dest: /usr/local/src/dwm
 
 - name: Make dwm
