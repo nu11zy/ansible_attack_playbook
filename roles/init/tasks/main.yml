@@ -19,6 +19,7 @@
       - curl
       - unzip
       - build-essential
+      - dkms
       - xserver-xorg-core
       - xserver-xorg-video-vmware
       - xserver-xorg-input-evdev

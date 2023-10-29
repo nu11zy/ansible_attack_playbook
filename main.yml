@@ -3,7 +3,7 @@
   connection: local
   roles:
     - role: init
-    - role: vbox_guest
+    # - role: vbox_guest
     - role: wm
     - role: dm
     # - role: fonts
