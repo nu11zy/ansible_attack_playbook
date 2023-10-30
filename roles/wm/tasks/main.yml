@@ -42,8 +42,10 @@
   copy:
     src: "{{ playbook_dir }}/roles/wm/files/autostart.sh"
     dest: "{{ ansible_env.HOME }}/.local/share/dwm/"
+    mode: 0755
 
 - name: Create {{ ansible_env.HOME }}/.local/share/dwm/status.sh
   copy:
     src: "{{ playbook_dir }}/roles/wm/files/status.sh"
     dest: "{{ ansible_env.HOME }}/.local/share/dwm/"
+    mode: 0755
