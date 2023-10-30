@@ -31,3 +31,19 @@
   copy:
     src: /usr/local/src/dwm/dwm.desktop
     dest: /usr/share/xsessions/
+
+- name: Create {{ ansible_env.HOME }}/.local/share/dwm directory
+  file: 
+    path: "{{ ansible_env.HOME }}/.local/share/dwm"
+    state: directory
+    recurse: true
+
+- name: Create {{ ansible_env.HOME }}/.local/share/dwm/autostart.sh
+  copy:
+    src: "{{ playbook_dir }}/roles/wm-config/files/autostart.sh"
+    dest: "{{ ansible_env.HOME }}/.local/share/dwm/"
+
+- name: Create {{ ansible_env.HOME }}/.local/share/dwm/status.sh
+  copy:
+    src: "{{ playbook_dir }}/roles/wm-config/files/status.sh"
+    dest: "{{ ansible_env.HOME }}/.local/share/dwm/"
