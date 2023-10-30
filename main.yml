@@ -9,4 +9,5 @@
     - role: alacritty
     - role: zsh
       tags: zsh_role
+    - role: tools
     - role: vbox_guest
