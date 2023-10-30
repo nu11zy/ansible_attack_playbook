@@ -40,10 +40,10 @@
 
 - name: Create {{ ansible_env.HOME }}/.local/share/dwm/autostart.sh
   copy:
-    src: "{{ playbook_dir }}/roles/wm-config/files/autostart.sh"
+    src: "{{ playbook_dir }}/roles/wm/files/autostart.sh"
     dest: "{{ ansible_env.HOME }}/.local/share/dwm/"
 
 - name: Create {{ ansible_env.HOME }}/.local/share/dwm/status.sh
   copy:
-    src: "{{ playbook_dir }}/roles/wm-config/files/status.sh"
+    src: "{{ playbook_dir }}/roles/wm/files/status.sh"
     dest: "{{ ansible_env.HOME }}/.local/share/dwm/"
