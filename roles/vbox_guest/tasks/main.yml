@@ -1,5 +1,15 @@
-- name : Install Vbox-Guest
+- name: Install Vbox-Guest
   become: true
   ansible.builtin.shell: |
-    "{{ playbook_dir }}/roles/vbox_guest/files/VBoxLinuxAdditions.run"
+    mkdir /mnt/cdrom
+    mount /dev/cdrom /mnt/cdrom
+    cd /mnt/cdrom
+    sh ./VBoxLinuxAdditions.run --nox11
+    cd /
+    umount -R /mnt/cdrom
+    rm -rf /mnt/cdrom
   ignore_errors: true
+
+- name: REBOOT!!!
+  debug:
+    msg: Done! Reboot.
