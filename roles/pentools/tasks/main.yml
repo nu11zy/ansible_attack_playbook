@@ -64,5 +64,5 @@
 - name: Rename BloodHound directory and create symlink
   tags: bloodhound
   ansible.builtin.shell: |
-    mv "{{ ansible_env.HOME }}/.local/BloodHound*" "{{ ansible_env.HOME }}/.local/bloodhound"
+    mv {{ ansible_env.HOME }}/.local/BloodHound* {{ ansible_env.HOME }}/.local/bloodhound
   #  ln -s "{{ ansible_env.HOME }}/.local/bin/bloodhound" "{{ ansible_env.HOME }}/.local/bloodhound/BloodHound"
