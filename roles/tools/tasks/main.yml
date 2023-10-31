@@ -26,9 +26,13 @@
   become: true
   ansible.builtin.apt:
     name: firefox-esr
+
+- name: Configure firefox enterprise policy
+  tags: firefox
+  become: true
   ansible.builtin.shell: unzip "{{ playbook_dir }}/roles/tools/files/enterprise_policy.zip" -d /usr/share/firefox-esr/
 
-- name: Configure firefox
+- name: Configure firefox profile
   tags: firefox
   ansible.builtin.shell: |
     cd ~/.mozilla/firefox/*.default-esr
