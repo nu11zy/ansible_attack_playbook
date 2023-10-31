@@ -4,6 +4,7 @@
   ansible.builtin.apt:
     name:
       - papirus-icon-theme
+      - gnome-themes-extra-data
       - lxappearance
 
 - name: Openvpn
@@ -21,7 +22,33 @@
     name: wireguard
 
 - name: Firefox
-  tags: Firefox
+  tags: firefox
   become: true
   ansible.builtin.apt:
     name: firefox-esr
+  ansible.builtin.shell: unzip "{{ playbook_dir }}/roles/tools/files/enterprise_policy.zip" -d /usr/share/firefox-esr/
+
+- name: Configure firefox
+  tags: firefox
+  ansible.builtin.shell: |
+    cd ~/.mozilla/firefox/*.default-esr
+    rm -rf *
+    unzip "{{ playbook_dir }}/roles/tools/files/profile.zip" -d ~/.mozilla/firefox/*.default-esr/
+
+- name: Thunar
+  tags: thunar
+  become: true
+  ansible.builtin.apt:
+    name:
+      - thunar
+      - file-roller
+
+- name: Pipx + pip3
+  tags: pipx
+  become: true
+  ansible.builtin.apt:
+    name:
+      - pipx
+      - python3-pip
+
+

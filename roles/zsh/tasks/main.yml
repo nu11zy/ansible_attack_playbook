@@ -11,3 +11,7 @@
     src: "{{ playbook_dir }}/roles/zsh/files/.zshrc"
     dest: "{{ ansible_env.HOME }}/"
     mode: 0644
+
+- name: Change shell for user
+  become: true
+  ansible.builtin.shell: usermod --shell /bin/zsh {{ ansible_env.USER }}

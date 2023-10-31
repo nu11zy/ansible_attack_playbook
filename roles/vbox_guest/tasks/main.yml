@@ -10,6 +10,10 @@
     rm -rf /mnt/cdrom
   ignore_errors: true
 
+- name: Add user to vboxsf group
+  become: true
+  ansible.builtin.shell: usermod -aG vboxsf {{ ansible_env.USER }}
+
 - name: REBOOT!!!
   debug:
     msg: Done! Reboot.
