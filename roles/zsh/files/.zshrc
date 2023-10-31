@@ -1,3 +1,6 @@
+# PATH
+export PATH=$PATH:~/.local/bin
+
 # https://zsh.sourceforge.io/Doc/Release/Options.html
 stty stop undef
 zle_highlight=('paste:none')
