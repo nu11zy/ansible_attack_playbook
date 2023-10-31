@@ -9,19 +9,19 @@
   ansible.builtin.shell: pipx install git+https://github.com/Pennyw0rth/NetExec
 
 - name: Find latest ffuf
-  tags: fuff
+  tags: ffuf
   uri:
     url: https://api.github.com/repos/ffuf/ffuf/releases/latest
     return_content: true
   register: fuff_latest
 
-# - name: Install ffuf
-#   tags: fuff
-#   loop: "{{ fuff_latest.json.assets }}"
-#   when: "'linux_amd64.tar.gz' in item.name"
-#   unarchive:
-#     remote_src: yes
-#     src: "{{ item.browser_download_url }}"
-#     dest: "{{ ansible_env.HOME }}/.local/bin/"
-#     keep_newer: yes
-#     include: ffuf
+- name: Install ffuf
+  tags: ffuf
+  loop: "{{ fuff_latest.json.assets }}"
+  when: "'linux_amd64.tar.gz' in item.name"
+  unarchive:
+    remote_src: yes
+    src: "{{ item.browser_download_url }}"
+    dest: "{{ ansible_env.HOME }}/.local/bin/"
+    keep_newer: yes
+    include: ffuf
