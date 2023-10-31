@@ -43,3 +43,22 @@
     dest: "{{ ansible_env.HOME }}/.local/bin/"
     keep_newer: yes
     include: gobuster
+
+- name: BloodHound
+  tags: bloodhound
+  uri:
+    url: https://api.github.com/repos/BloodHoundAD/BloodHound/releases/latest
+    return_content: true
+  register: bloodhound_latest
+
+- name: Install bloodhound
+  tags: bloodhound
+  loop: "{{ bloodhound_latest.json.assets }}"
+  when: "'linux-x64.zip' in item.name"
+  unarchive:
+    remote_src: yes
+    src: "{{ item.browser_download_url }}"
+    creates: "{{ ansible_env.HOME }}/.local/bloodhound"
+    dest: "{{ ansible_env.HOME }}/.local/bloodhound/"
+    keep_newer: yes
+    include: BloodHound-linux-x64/*

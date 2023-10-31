@@ -17,6 +17,7 @@
     name:
       - git
       - curl
+      - wget
       - unzip
       - build-essential
       - dkms
