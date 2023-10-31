@@ -58,7 +58,7 @@
   unarchive:
     remote_src: yes
     src: "{{ item.browser_download_url }}"
-    creates: "{{ ansible_env.HOME }}/.local/bloodhound"
     dest: "{{ ansible_env.HOME }}/.local/bloodhound/"
+    creates: "{{ ansible_env.HOME }}/.local/bloodhound"
     keep_newer: yes
     include: BloodHound-linux-x64/*
