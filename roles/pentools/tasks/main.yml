@@ -15,7 +15,7 @@
     return_content: true
   register: fuff_latest
 
-- name: Find latest ffuf
+- name: Install ffuf
   tags: fuff
   loop: "{{ fuff_latest.json.assets }}"
   when: "'linux_amd64.tar.gz' in item.name"
