@@ -51,12 +51,6 @@
     return_content: true
   register: bloodhound_latest
 
-- name: Create BloodHound directory
-  tags: bloodhound
-  file:
-    path: "{{ ansible_env.HOME }}/.local/bloodhound"
-    state: directory
-
 - name: Install BloodHound
   tags: bloodhound
   loop: "{{ bloodhound_latest.json.assets }}"
@@ -64,6 +58,9 @@
   unarchive:
     remote_src: yes
     src: "{{ item.browser_download_url }}"
-    dest: "{{ ansible_env.HOME }}/.local/bloodhound/"
+    dest: "{{ ansible_env.HOME }}/.local/"
     keep_newer: yes
-    include: "*/*"
+  
+- name: Rename BloodHound directory
+  tags: bloodhound
+  ansible.builtin.shell: mv "{{ ansible_env.HOME }}/.local/BloodHound*" "{{ ansible_env.HOME }}/.local/bloodhound"
