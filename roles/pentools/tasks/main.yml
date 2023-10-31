@@ -65,6 +65,4 @@
   tags: bloodhound
   ansible.builtin.shell: |
     mv {{ ansible_env.HOME }}/.local/BloodHound* {{ ansible_env.HOME }}/.local/bloodhound
-    printf "#\!/bin/sh\n./BloodHound --in-process-gpu" > {{ ansible_env.HOME }}/.local/bloodhound/launcher
-    chmod +x {{ ansible_env.HOME }}/.local/bloodhound/launcher
-    ln -s {{ ansible_env.HOME }}/.local/bloodhound/launcher {{ ansible_env.HOME }}/.local/bin/bloodhound
+    ln -s {{ ansible_env.HOME }}/.local/bloodhound/BloodHound {{ ansible_env.HOME }}/.local/bin/bloodhound
