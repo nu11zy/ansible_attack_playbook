@@ -1,8 +1,10 @@
-- name: Nmap
-  tags: nmap
+- name: Appearence
+  tags: appearence
   become: true
   ansible.builtin.apt:
-    name: nmap
+    name:
+      - papirus-icon-theme
+      - lxappearance
 
 - name: Openvpn
   tags: Openvpn
@@ -17,3 +19,9 @@
   become: true
   ansible.builtin.apt:
     name: wireguard
+
+- name: Firefox
+  tags: Firefox
+  become: true
+  ansible.builtin.apt:
+    name: firefox-esr
