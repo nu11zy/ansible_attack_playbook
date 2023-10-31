@@ -10,4 +10,5 @@
     - role: zsh
       tags: zsh_role
     - role: tools
+    - role: pentools
     - role: vbox_guest
