@@ -35,9 +35,11 @@
 - name: Configure firefox profile
   tags: firefox
   ansible.builtin.shell: |
-    cd ~/.mozilla/firefox/*.default-esr
-    yes | rm -rf *
-    yes | unzip "{{ playbook_dir }}/roles/tools/files/profile.zip" -d ~/.mozilla/firefox/*.default-esr/
+    mkdir -p ~/.mozilla/firefox/kekpek69.default-esr
+    yes | unzip {{ playbook_dir }}/roles/tools/files/profile.zip -d ~/.mozilla/firefox/kekpek69.default-esr/
+#    cd ~/.mozilla/firefox/*.default-esr
+#    yes | rm -rf *
+  ignore_errors: true
 
 - name: Thunar
   tags: thunar
