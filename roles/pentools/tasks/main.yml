@@ -4,10 +4,17 @@
   ansible.builtin.apt:
     name: nmap
 
+- name: Proxychains4
+  tags: proxychains4
+  become: true
+  ansible.builtin.apt:
+    name: proxychains4
+
 - name: NetExec
   tags: netexec
   ansible.builtin.shell: pipx install git+https://github.com/Pennyw0rth/NetExec
 
+### ffuf
 - name: Find latest ffuf
   tags: ffuf
   uri:
@@ -25,7 +32,9 @@
     dest: "{{ ansible_env.HOME }}/.local/bin/"
     keep_newer: yes
     include: ffuf
+###
 
+### gobuster
 - name: Find latest gobuster
   tags: gobuster
   uri:
@@ -43,7 +52,9 @@
     dest: "{{ ansible_env.HOME }}/.local/bin/"
     keep_newer: yes
     include: gobuster
+###
 
+### bloodhound
 - name: BloodHound
   tags: bloodhound
   uri:
@@ -66,3 +77,24 @@
   ansible.builtin.shell: |
     mv {{ ansible_env.HOME }}/.local/BloodHound* {{ ansible_env.HOME }}/.local/bloodhound
     ln -s {{ ansible_env.HOME }}/.local/bloodhound/BloodHound {{ ansible_env.HOME }}/.local/bin/bloodhound
+###
+
+### chisel
+- name: Find latest chisel
+  tags: chisel
+  uri:
+    url: https://api.github.com/repos/jpillora/chisel/releases/latest
+    return_content: true
+  register: chisel_latest
+
+- name: Install chisel
+  tags: chisel
+  loop: "{{ chisel_latest.json.assets }}"
+  when: "'linux_amd64.gz' in item.name"
+  unarchive:
+    remote_src: yes
+    src: "{{ item.browser_download_url }}"
+    dest: "{{ ansible_env.HOME }}/.local/bin/"
+    keep_newer: yes
+    include: chisel
+###
