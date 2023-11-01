@@ -18,6 +18,8 @@
       - git
       - curl
       - wget
+      - tmux
+      - nano
       - unzip
       - build-essential
       - dkms
