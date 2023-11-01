@@ -80,21 +80,7 @@
 ###
 
 ### chisel
-- name: Find latest chisel
+- name: Chisel
   tags: chisel
-  uri:
-    url: https://api.github.com/repos/jpillora/chisel/releases/latest
-    return_content: true
-  register: chisel_latest
-
-- name: Install chisel
-  tags: chisel
-  loop: "{{ chisel_latest.json.assets }}"
-  when: "'linux_amd64.gz' in item.name"
-  unarchive:
-    remote_src: yes
-    src: "{{ item.browser_download_url }}"
-    dest: "{{ ansible_env.HOME }}/.local/bin/"
-    keep_newer: yes
-    include: chisel
+  ansible.builtin.shell: curl https://i.jpillora.com/chisel! | bash -s -- -d ~/.local/bin/
 ###
