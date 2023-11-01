@@ -85,3 +85,26 @@
   become: true
   ansible.builtin.shell: curl https://i.jpillora.com/chisel! | bash
 ###
+
+### tun2socks
+- name: Find latest tun2socks
+  tags: tun2socks
+  uri:
+    url: https://api.github.com/repos/xjasonlyu/tun2socks/releases/latest
+    return_content: true
+  register: tun2socks_latest
+
+- name: Install tun2socks
+  tags: tun2socks
+  loop: "{{ tun2socks_latest.json.assets }}"
+  when: "'linux-amd64.zip' in item.name"
+  unarchive:
+    remote_src: yes
+    src: "{{ item.browser_download_url }}"
+    dest: "{{ ansible_env.HOME }}/.local/bin/"
+    keep_newer: yes
+
+- name: Rename tun2socks binary
+  tags: tun2socks
+  ansible.builtin.shell: mv {{ ansible_env.HOME }}/.local/bin/tun2socks* {{ ansible_env.HOME }}/.local/bin/tun2socks
+###
