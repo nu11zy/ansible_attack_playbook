@@ -34,19 +34,36 @@
   ansible.builtin.apt:
     name: hydra
 
-- name: NetExec
-  tags: netexec
-  ansible.builtin.shell: pipx install git+https://github.com/Pennyw0rth/NetExec
-
-- name: SmbMap
-  tags: smbmap
-  ansible.builtin.shell: pipx install smbmap
-
 - name: VSCode
   tags: vscode
   become: true
   ansible.builtin.apt:
     deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+
+- name: NetExec
+  tags: netexec
+  ansible.builtin.shell: pipx install git+https://github.com/Pennyw0rth/NetExec
+
+- name: DonPAPI
+  tags: donpapi
+  ansible.builtin.shell: pipx install git+https://github.com/login-securite/DonPAPI.git
+
+- name: Wafw00f
+  tags: wafw00f
+  ansible.builtin.shell: git+https://github.com/EnableSecurity/wafw00f
+
+- name: SmbMap
+  tags: smbmap
+  ansible.builtin.shell: pipx install smbmap
+
+- name: Impacket
+  tags: impacket
+  ansible.builtin.shell: pipx install impacket
+
+- name: Chisel
+  tags: chisel
+  become: true
+  ansible.builtin.shell: curl https://i.jpillora.com/chisel! | bash
 
 ### ffuf
 - name: Find latest ffuf
@@ -111,13 +128,6 @@
   ansible.builtin.shell: |
     mv {{ ansible_env.HOME }}/.local/BloodHound* {{ ansible_env.HOME }}/.local/bloodhound
     ln -s {{ ansible_env.HOME }}/.local/bloodhound/BloodHound {{ ansible_env.HOME }}/.local/bin/bloodhound
-###
-
-### chisel
-- name: Chisel
-  tags: chisel
-  become: true
-  ansible.builtin.shell: curl https://i.jpillora.com/chisel! | bash
 ###
 
 ### tun2socks
