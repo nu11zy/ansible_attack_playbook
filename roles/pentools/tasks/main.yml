@@ -83,7 +83,7 @@
     pipx install git+https://github.com/bitsadmin/wesng
     pipx inject wesng chardet
 
-#
+# https://github.com/jpillora/chisel
 - name: Chisel
   tags: chisel
   become: true
@@ -103,7 +103,7 @@
   become: true
   ansible.builtin.shell: gem install evil-winrm
 
-### ffuf
+# https://github.com/ffuf/ffuf
 - name: Find latest ffuf
   tags: ffuf
   uri:
@@ -121,9 +121,8 @@
     dest: "{{ ansible_env.HOME }}/.local/bin/"
     keep_newer: yes
     include: ffuf
-###
 
-### gobuster
+# https://github.com/OJ/gobuster
 - name: Find latest gobuster
   tags: gobuster
   uri:
@@ -141,9 +140,8 @@
     dest: "{{ ansible_env.HOME }}/.local/bin/"
     keep_newer: yes
     include: gobuster
-###
 
-### bloodhound
+# https://github.com/BloodHoundAD/BloodHound
 - name: BloodHound
   tags: bloodhound
   uri:
@@ -166,9 +164,8 @@
   ansible.builtin.shell: |
     mv {{ ansible_env.HOME }}/.local/BloodHound* {{ ansible_env.HOME }}/.local/bloodhound
     ln -s {{ ansible_env.HOME }}/.local/bloodhound/BloodHound {{ ansible_env.HOME }}/.local/bin/bloodhound
-###
 
-### tun2socks
+# https://github.com/xjasonlyu/tun2socks
 - name: Find latest tun2socks
   tags: tun2socks
   uri:
@@ -189,7 +186,6 @@
 - name: Rename tun2socks binary
   tags: tun2socks
   ansible.builtin.shell: mv {{ ansible_env.HOME }}/.local/bin/tun2socks* {{ ansible_env.HOME }}/.local/bin/tun2socks
-###
 
 # TODO:
 # https://github.com/nil0x42/phpsploit
