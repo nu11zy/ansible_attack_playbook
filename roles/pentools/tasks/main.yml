@@ -82,5 +82,6 @@
 ### chisel
 - name: Chisel
   tags: chisel
-  ansible.builtin.shell: curl https://i.jpillora.com/chisel! | bash -s -- -d ~/.local/bin/
+  become: true
+  ansible.builtin.shell: curl https://i.jpillora.com/chisel! | bash
 ###
