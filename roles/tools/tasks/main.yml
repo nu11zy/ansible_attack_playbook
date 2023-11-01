@@ -70,3 +70,19 @@
   when: item.name is match("bat_.*_amd64\.deb")
   ansible.builtin.apt:
     deb: "{{ item.browser_download_url }}"
+
+# https://github.com/sharkdp/hexyl
+- name: Find latest hexyl
+  tags: hexyl
+  uri:
+    url: https://api.github.com/repos/sharkdp/hexyl/releases/latest
+    return_content: true
+  register: hexyl_latest
+
+- name: Install hexyl
+  tags: hexyl
+  become: true
+  loop: "{{ hexyl_latest.json.assets }}"
+  when: item.name is match("hexyl_.*_amd64\.deb")
+  ansible.builtin.apt:
+    deb: "{{ item.browser_download_url }}"
