@@ -56,7 +56,7 @@
 
 - name: Wafw00f
   tags: wafw00f
-  ansible.builtin.shell: git+https://github.com/EnableSecurity/wafw00f
+  ansible.builtin.shell: pipx install git+https://github.com/EnableSecurity/wafw00f
 
 - name: SmbMap
   tags: smbmap
@@ -66,15 +66,42 @@
   tags: impacket
   ansible.builtin.shell: pipx install impacket
 
+# https://github.com/darkoperator/dnsrecon/
+- name: Dnsrecon
+  tags: dnsrecon
+  ansible.builtin.shell: pipx install dnsrecon
+
 # https://github.com/Densaugeo/uploadserver
 - name: Uploadserver
   tags: uploadserver
   ansible.builtin.shell: pipx install uploadserver
 
+# https://github.com/bitsadmin/wesng
+- name: Wesng
+  tags: wesng
+  ansible.builtin.shell: |
+    pipx install git+https://github.com/bitsadmin/wesng
+    pipx inject wesng chardet
+
+#
 - name: Chisel
   tags: chisel
   become: true
   ansible.builtin.shell: curl https://i.jpillora.com/chisel! | bash
+
+# https://github.com/Hackplayers/evil-winrm
+- name: EvilWinrm requirements
+  tags: evilwinrm
+  become: true
+  ansible.builtin.apt:
+    name:
+      - ruby
+      - ruby-dev
+
+- name: Install EvilWinrm
+  tags: evilwinrm
+  become: true
+  ansible.builtin.shell: gem install evil-winrm
 
 ### ffuf
 - name: Find latest ffuf
@@ -164,3 +191,6 @@
   ansible.builtin.shell: mv {{ ansible_env.HOME }}/.local/bin/tun2socks* {{ ansible_env.HOME }}/.local/bin/tun2socks
 ###
 
+# TODO:
+# https://github.com/nil0x42/phpsploit
+# https://github.com/lgandx/Responder
