@@ -60,6 +60,11 @@
   tags: impacket
   ansible.builtin.shell: pipx install impacket
 
+# https://github.com/Densaugeo/uploadserver
+- name: Uploadserver
+  tags: uploadserver
+  ansible.builtin.shell: pipx install uploadserver
+
 - name: Chisel
   tags: chisel
   become: true
