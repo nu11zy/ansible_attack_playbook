@@ -10,6 +10,18 @@
   ansible.builtin.apt:
     name: proxychains4
 
+- name: Freerdp
+  tags: freerdp
+  become: true
+  ansible.builtin.apt:
+    name: freerdp2-x11
+
+- name: Hydra
+  tags: hydra
+  become: true
+  ansible.builtin.apt:
+    name: hydra
+
 - name: NetExec
   tags: netexec
   ansible.builtin.shell: pipx install git+https://github.com/Pennyw0rth/NetExec
@@ -108,3 +120,4 @@
   tags: tun2socks
   ansible.builtin.shell: mv {{ ansible_env.HOME }}/.local/bin/tun2socks* {{ ansible_env.HOME }}/.local/bin/tun2socks
 ###
+
