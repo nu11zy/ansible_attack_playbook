@@ -32,14 +32,20 @@
   become: true
   ansible.builtin.shell: yes | unzip "{{ playbook_dir }}/roles/tools/files/enterprise_policy.zip" -d /usr/share/firefox-esr/
 
+- name: Start firefox
+  tags: firefox
+  ansible.builtin.shell: |
+    printf("firefox &\nexec dwm") > ~/.xinitrc
+    chmod +x ~/.xinitrc
+    timeout 10 startx
+  ignore_errors: true
+
 - name: Configure firefox profile
   tags: firefox
   ansible.builtin.shell: |
-    mkdir -p ~/.mozilla/firefox/kekpek69.default-esr
-    yes | unzip {{ playbook_dir }}/roles/tools/files/profile.zip -d ~/.mozilla/firefox/kekpek69.default-esr/
-#    cd ~/.mozilla/firefox/*.default-esr
-#    yes | rm -rf *
-  ignore_errors: true
+    cd ~/.mozilla/firefox/*.default-esr
+    yes | rm -rf *
+    yes | unzip "{{ playbook_dir }}/roles/tools/files/profile.zip" -d ~/.mozilla/firefox/*.default-esr/
 
 - name: Thunar
   tags: thunar
