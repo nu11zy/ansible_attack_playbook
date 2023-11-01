@@ -46,7 +46,7 @@
   tags: vscode
   become: true
   ansible.builtin.apt:
-    deb: https://code.visualstudio.com/docs/?dv=linux64_deb
+    deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
 
 ### ffuf
 - name: Find latest ffuf
