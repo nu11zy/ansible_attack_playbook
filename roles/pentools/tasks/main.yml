@@ -34,6 +34,12 @@
   ansible.builtin.apt:
     name: hydra
 
+- name: Rlwrap
+  tags: rlwrap
+  become: true
+  ansible.builtin.apt:
+    name: rlwrap
+
 - name: VSCode
   tags: vscode
   become: true
