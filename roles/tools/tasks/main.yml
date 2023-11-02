@@ -27,24 +27,6 @@
   ansible.builtin.apt:
     name: firefox-esr
 
-- name: Configure firefox enterprise policy
-  tags: firefox
-  become: true
-  ansible.builtin.shell: yes | unzip "{{ playbook_dir }}/roles/tools/files/enterprise_policy.zip" -d /usr/share/firefox-esr/
-
-- name: Start firefox
-  tags: firefox
-  ansible.builtin.shell: |
-    timeout 10 firefox
-  ignore_errors: true
-
-- name: Configure firefox profile
-  tags: firefox
-  ansible.builtin.shell: |
-    cd ~/.mozilla/firefox/*.default-esr
-    yes | rm -rf *
-    yes | unzip "{{ playbook_dir }}/roles/tools/files/profile.zip" -d ~/.mozilla/firefox/*.default-esr/
-
 - name: Thunar
   tags: thunar
   become: true
