@@ -8,6 +8,7 @@
     cd /
     umount -R /mnt/cdrom
     rm -rf /mnt/cdrom
+    eject
   ignore_errors: true
 
 - name: Add user to vboxsf group
