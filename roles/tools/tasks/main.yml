@@ -7,6 +7,18 @@
       - gnome-themes-extra-data
       - lxappearance
 
+- name: Create gtk config directory
+  tags: appearence
+  file:
+    path: "{{ ansible_env.HOME }}/.config/gtk-3.0"
+    state: directory
+
+- name: Configure theme and icons
+  tags: appearence
+  copy:
+    src: "{{ playbook_dir }}/roles/tools/files/settings.ini"
+    dest: "{{ ansible_env.HOME }}/.config/gtk-3.0/"
+
 - name: Openvpn
   tags: Openvpn
   become: true
