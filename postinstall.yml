@@ -1,5 +1,0 @@
-- name: AttackBox postinstall
-  hosts: localhost
-  connection: local
-  roles:
-    - role: postinstall
