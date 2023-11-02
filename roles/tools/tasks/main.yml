@@ -35,9 +35,7 @@
 - name: Start firefox
   tags: firefox
   ansible.builtin.shell: |
-    printf "firefox &\nexec dwm" > ~/.xinitrc
-    chmod +x ~/.xinitrc
-    timeout 10 startx
+    timeout 10 firefox
   ignore_errors: true
 
 - name: Configure firefox profile
