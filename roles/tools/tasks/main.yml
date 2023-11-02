@@ -91,9 +91,8 @@
 
 - name: Ensures {{ ansible_env.HOME }}/.config/nvim/ dir exists
   become: true
-  file: 
-    path: "{{ ansible_env.HOME }}/.config/nvim"
-    state: directory
+  ansible.builtin.shell: |
+    mkdir -p {{ ansible_env.HOME }}/.config/nvim
 
 - name: Configure neovim
   tags: neovim
