@@ -159,11 +159,21 @@
     dest: "{{ ansible_env.HOME }}/.local/"
     keep_newer: yes
 
-- name: Rename BloodHound directory and create symlink
+- name: Rename BloodHound directory
   tags: bloodhound
   ansible.builtin.shell: |
     mv {{ ansible_env.HOME }}/.local/BloodHound* {{ ansible_env.HOME }}/.local/bloodhound
-    ln -s {{ ansible_env.HOME }}/.local/bloodhound/BloodHound {{ ansible_env.HOME }}/.local/bin/bloodhound
+
+- name: Create dmenu launcher
+  tags: bloodhound
+  become: true
+  copy:
+    dest: "/usr/local/bin/bloodhound"
+    content: |
+      #!/bin/sh
+      $HOME/.local/bloodhound/BloodHound --in-process-gpu  
+    mode: 0755
+
 
 # https://github.com/xjasonlyu/tun2socks
 - name: Find latest tun2socks
