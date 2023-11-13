@@ -33,7 +33,7 @@
   ansible.builtin.apt:
     name: 
       - wireguard
-      - resolfconf
+      - resolvconf
 
 - name: Firefox
   tags: firefox
