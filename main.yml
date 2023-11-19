@@ -15,3 +15,5 @@
       tags: pentools_role
     - role: vbox_guest
       tags: vbox_role
+    - role: resolvconf
+      tags: resolvconf_role

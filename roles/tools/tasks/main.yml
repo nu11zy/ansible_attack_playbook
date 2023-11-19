@@ -31,9 +31,7 @@
   tags: wireguard
   become: true
   ansible.builtin.apt:
-    name: 
-      - wireguard
-      - resolvconf
+    name: wireguard
 
 - name: Firefox
   tags: firefox
